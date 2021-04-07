@@ -1,5 +1,5 @@
 const { Schema, model } = require("mongoose");
-const LOCATION_ENUM = require("../utils/consts");
+const LOCATION_ENUM = require("../utils/constants");
 
 // TODO: Please make sure you edit the user model to whatever makes sense in this case
 const postingSchema = new Schema({
@@ -16,13 +16,10 @@ const postingSchema = new Schema({
   },
   location: {
     type: String,
-    default: "Berlin",
-    enum: LOCATION_ENUM,
   },
   date: Date,
   adress: {
-    type: String,
-    required: true,
+    type: Object,
   },
   phoneNumber: {
     type: String,
@@ -39,6 +36,6 @@ const postingSchema = new Schema({
   },
 });
 
-const Posting = model("Posting", postingSchema);
+const PostingModel = model("PostingData", postingSchema);
 
-module.exports = Posting;
+module.exports = PostingModel;
