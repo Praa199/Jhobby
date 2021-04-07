@@ -88,9 +88,10 @@ User model
 ```
 firstName: String,
 lastName: String,
-location: ENUM, required
+location: [ENUM], required
 email: String, required, unique
 password: String, required
+posting: [String]
 
 
 
@@ -102,17 +103,21 @@ Posting model
 
 title: String, required
 description: String, required
-location: ENUM, required
+location: [ENUM], required
 date: Date, default
 adress: String, required
 phoneNumber: String
-insurance: ENUM
+insurance: [ENUM]
 hourlyFee: String
 image: String
 
 ```
 
 ## Links
+
+http://api.dataatwork.org/
+https://fakerapi.it/
+https://pipl.ir/
 
 ### Trello
 

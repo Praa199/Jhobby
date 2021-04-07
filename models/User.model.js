@@ -1,5 +1,5 @@
 const { Schema, model } = require("mongoose");
-const LOCATION_ENUM = require("../utils/consts");
+const LOCATION_ENUM = require("../utils/constants.js");
 
 // TODO: Please make sure you edit the user model to whatever makes sense in this case
 const userSchema = new Schema({
@@ -24,8 +24,9 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
+  posting: [String],
 });
 
-const User = model("User", userSchema);
+const UserModel = model("UserData", userSchema);
 
-module.exports = User;
+module.exports = UserModel;

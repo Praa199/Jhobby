@@ -11,8 +11,8 @@ const postingSchema = new Schema({
   description: {
     type: String,
     required: true,
-    min: 50,
-    max: 600,
+    min: 20,
+    max: 100,
   },
   location: {
     type: String,
