@@ -23,13 +23,15 @@ router.get("/signup", shouldNotBeLoggedIn, (req, res) => {
 router.post("/signup", shouldNotBeLoggedIn, (req, res) => {
   const { firstName, location, email, password } = req.body;
 
-  if (!firstName || !location || !email || !password) {
-    return res.status(400).render("signup", { errorMessage: "Missing data." });
+  if (!firstName || !location || !email) {
+    return res
+      .status(400)
+      .render("auth/signup", { errorMessage: "Missing data." });
   }
 
-  if (password.length < 1) {
-    return res.status(400).render("signup", {
-      errorMessage: "Your password needs to be at least 8 characters long.",
+  if (password.length < 3 || !password.length) {
+    return res.status(400).render("auth/signup", {
+      errorMessage: "Your password needs to be at least 3 characters long.",
     });
   }
 
@@ -51,7 +53,7 @@ router.post("/signup", shouldNotBeLoggedIn, (req, res) => {
     if (found) {
       return res
         .status(400)
-        .render("signup", { errorMessage: "Email already taken." });
+        .render("auth/signup", { errorMessage: "Email already taken." });
     }
 
     // if user is not found, create a new user - start with hashing the password
@@ -79,14 +81,14 @@ router.post("/signup", shouldNotBeLoggedIn, (req, res) => {
             .render("auth/signup", { errorMessage: error.message });
         }
         if (error.code === 11000) {
-          return res.status(400).render("signup", {
+          return res.status(400).render("auth/signup", {
             errorMessage:
-              "Email need to be unique. The email you chose is already in use.",
+              "Email needs to be unique. The email you chose is already in use.",
           });
         }
         return res
           .status(500)
-          .render("signup", { errorMessage: error.message });
+          .render("auth/signup", { errorMessage: error.message });
       });
   });
 });
@@ -101,13 +103,13 @@ router.post("/login", shouldNotBeLoggedIn, (req, res, next) => {
   if (!email) {
     return res
       .status(400)
-      .render("login", { errorMessage: "Please provide your email." });
+      .render("auth/login", { errorMessage: "Please provide your email." });
   }
 
   // Here we use the same logic as above
   // - either length based parameters or we check the strength of a password
   if (password.length < 1) {
-    return res.status(400).render("login", {
+    return res.status(400).render("auth/login", {
       errorMessage: "Your password needs to be at least 8 characters long.",
     });
   }

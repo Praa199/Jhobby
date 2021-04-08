@@ -1,32 +1,29 @@
 const express = require("express");
-const UserModel = require("../models/User.model");
-
 const router = express.Router();
 
-router.get("/", (req, res) => {
-  UserModel.findById({ _id: "606d7cf7782bc3d2058fab57" })
-    .then((response) => {
-      // console.log("profile***", { response });
-      res.render("profile-views/profile", { response });
-    })
-    .catch((err) => {
-      console.log("error***", err);
-    });
+const isLoggedIn = require("../middlewares/isLoggedIn");
+
+const UserModel = require("../models/User.model");
+
+router.get("/", isLoggedIn, (req, res) => {
+  res.render("profile-views/profile", { user: req.session.user });
 });
 
-router.get("/edit", (req, res, next) => {
-  console.log("edit-profile****");
-  res.render("profile-views/edit-profile");
+router.get("/edit", isLoggedIn, (req, res, next) => {
+  res.render("profile-views/edit-profile", { user: req.session.user });
 });
 
 router.post("/edit", (req, res, next) => {
-  console.log("edit-profile-form****");
-  const { firstName, lastName, location, email, posting } = req.body;
-  PostingModel.create()
-    .then((result) => {
-      res.render("posting/post-form.hbs");
-    })
-    .catch((err) => {});
+  const { firstName, lastName, location, email, images } = req.body;
+  UserModel.findByIdAndUpdate(
+    req.session.user._id,
+    { firstName, lastName, location, email, images },
+    { new: true }
+  ).then((newUser) => {
+    // console.log("newUser:", newUser);
+    req.session.user = newUser;
+    res.redirect("/profile");
+  });
 });
 
 router.get("/:post", (req, res, next) => {
@@ -38,13 +35,12 @@ router.get("/:post", (req, res, next) => {
     .catch((err) => {});
 });
 
-// router.get("/lucky")
-
-// router.get("/result", (req, res, next) => {
-//   console.log("something****");
-//   res.render("posting/post-results");
+// UserModel.findById({ _id: "606d7cf7782bc3d2058fab57" })
+// .then((response) => {
+//   // console.log("profile***", { response });
+// })
+// .catch((err) => {
+//   console.log("error***", err);
 // });
-
-// router.get("/lucky")
 
 module.exports = router;

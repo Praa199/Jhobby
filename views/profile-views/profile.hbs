@@ -2,16 +2,16 @@
 <div>
   <div>
     <h3>
-      {{response.firstName}} {{response.lastName}}
+      {{user.firstName}} {{user.lastName}}
     </h3>
-    <h4>{{response.location}}</h4>
-    <img src="{{response.image}}" alt="image" srcset="">
+    <h4>{{user.location}}</h4>
+    <img src="{{user.image}}" alt="image" srcset="">
     <a href="/profile/edit"><button>Update Profile</button></a>
   </div>
   <div>
     <a href="/posting/new"><button>New Post</button></a>
     <div>
-      {{!-- {{#each response.posting }} --}}
+      {{!-- {{#each user.posting }} --}}
       <a href="/posting/view">
         <h3>
           title
