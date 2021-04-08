@@ -1,14 +1,18 @@
 <h1>This is the search result</h1>
 <div>
   {{#each result }}
-  <h3>
-    {{this.title}}
-  </h3>
+  <a href="/posting/view">
+    <h3>
+      {{this.title}}
+    </h3>
+  </a>
   <p>
     {{this.description}}
   </p>
   <div>
     {{this.image}}
   </div>
+  <a href="/auth/login"><button>Contact</button></a>
+  <a href="/auth/signup"><button>Evaluate</button></a>
   {{/each}}
 </div>

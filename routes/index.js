@@ -6,10 +6,6 @@ router.get("/", (req, res, next) => {
   res.render("index");
 });
 
-// router.get("/result", (req, res, next) => {
-//   res.render("posting/post-results");
-// });
-
 app.get("/", (req, res, next) => {
   res.render("index");
 });

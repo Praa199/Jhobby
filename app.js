@@ -22,7 +22,7 @@ const projectName = "Jobby";
 const capitalized = (string) =>
   string[0].toUpperCase() + string.slice(1).toLowerCase();
 
-app.locals.title = `${capitalized(projectName)}- Generated with Ironlauncher`;
+app.locals.title = `${capitalized(projectName)}`;
 
 // 👇 Start handling routes here
 const index = require("./routes/index");
@@ -33,6 +33,12 @@ app.use("/auth", authRoutes);
 
 const postingRoutes = require("./routes/posting.route");
 app.use("/posting", postingRoutes);
+
+const profileRoutes = require("./routes/profile.route");
+app.use("/profile", profileRoutes);
+
+const messageRoutes = require("./routes/message.route");
+app.use("/message", messageRoutes);
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);

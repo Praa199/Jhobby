@@ -1,0 +1,35 @@
+<h1>Profile</h1>
+<div>
+  <div>
+    <h3>
+      {{response.firstName}} {{response.lastName}}
+    </h3>
+    <h4>{{response.location}}</h4>
+    <img src="{{response.image}}" alt="image" srcset="">
+    <a href="/profile/edit"><button>Update Profile</button></a>
+  </div>
+  <div>
+    <a href="/posting/new"><button>New Post</button></a>
+    <div>
+      {{!-- {{#each response.posting }} --}}
+      <a href="/posting/view">
+        <h3>
+          title
+          {{!-- {{this.title}} --}}
+        </h3>
+
+      </a>
+      <p>
+        description
+        {{!-- {{this.description}} --}}
+      </p>
+      <div>
+        0.0
+        {{!-- {{this.image}} --}}
+      </div>
+      {{!-- {{/each}} --}}
+      <a href="/posting/edit"><button>Edit Post</button></a>
+      <a href="/posting/delete"><button>Remove Post</button></a>
+    </div>
+  </div>
+</div>

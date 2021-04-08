@@ -7,8 +7,8 @@ const mongoose = require("mongoose");
 // How many rounds should bcrypt run the salt (default [10 - 12 rounds])
 const saltRounds = 10;
 
-// Require the User model in order to interact with the database
-const User = require("../models/User.model");
+// Require the UserModel model in order to interact with the database
+const UserModel = require("../models/User.model");
 
 // Require necessary middlewares in order to control access to specific routes
 const shouldNotBeLoggedIn = require("../middlewares/shouldNotBeLoggedIn");
@@ -21,15 +21,13 @@ router.get("/signup", shouldNotBeLoggedIn, (req, res) => {
 });
 
 router.post("/signup", shouldNotBeLoggedIn, (req, res) => {
-  const { username, password } = req.body;
+  const { firstName, location, email, password } = req.body;
 
-  if (!username) {
-    return res
-      .status(400)
-      .render("signup", { errorMessage: "Please provide your username." });
+  if (!firstName || !location || !email || !password) {
+    return res.status(400).render("signup", { errorMessage: "Missing data." });
   }
 
-  if (password.length < 8) {
+  if (password.length < 1) {
     return res.status(400).render("signup", {
       errorMessage: "Your password needs to be at least 8 characters long.",
     });
@@ -47,13 +45,13 @@ router.post("/signup", shouldNotBeLoggedIn, (req, res) => {
   }
   */
 
-  // Search the database for a user with the username submitted in the form
-  User.findOne({ username }).then((found) => {
-    // If the user is found, send the message username is taken
+  // Search the database for a user with the email submitted in the form
+  UserModel.findOne({ email }).then((found) => {
+    // If the user is found, send the message email is taken
     if (found) {
       return res
         .status(400)
-        .render("signup", { errorMessage: "Username already taken." });
+        .render("signup", { errorMessage: "Email already taken." });
     }
 
     // if user is not found, create a new user - start with hashing the password
@@ -62,8 +60,10 @@ router.post("/signup", shouldNotBeLoggedIn, (req, res) => {
       .then((salt) => bcrypt.hash(password, salt))
       .then((hashedPassword) => {
         // Create a user and save it in the database
-        return User.create({
-          username,
+        return UserModel.create({
+          firstName,
+          location,
+          email,
           password: hashedPassword,
         });
       })
@@ -76,12 +76,12 @@ router.post("/signup", shouldNotBeLoggedIn, (req, res) => {
         if (error instanceof mongoose.Error.ValidationError) {
           return res
             .status(400)
-            .render("signup", { errorMessage: error.message });
+            .render("auth/signup", { errorMessage: error.message });
         }
         if (error.code === 11000) {
           return res.status(400).render("signup", {
             errorMessage:
-              "Username need to be unique. The username you chose is already in use.",
+              "Email need to be unique. The email you chose is already in use.",
           });
         }
         return res
@@ -96,38 +96,38 @@ router.get("/login", shouldNotBeLoggedIn, (req, res) => {
 });
 
 router.post("/login", shouldNotBeLoggedIn, (req, res, next) => {
-  const { username, password } = req.body;
+  const { email, password } = req.body;
 
-  if (!username) {
+  if (!email) {
     return res
       .status(400)
-      .render("login", { errorMessage: "Please provide your username." });
+      .render("login", { errorMessage: "Please provide your email." });
   }
 
   // Here we use the same logic as above
   // - either length based parameters or we check the strength of a password
-  if (password.length < 8) {
+  if (password.length < 1) {
     return res.status(400).render("login", {
       errorMessage: "Your password needs to be at least 8 characters long.",
     });
   }
 
-  // Search the database for a user with the username submitted in the form
-  User.findOne({ username })
+  // Search the database for a user with the email submitted in the form
+  UserModel.findOne({ email })
     .then((user) => {
       // If the user isn't found, send the message that user provided wrong credentials
       if (!user) {
         return res
           .status(400)
-          .render("login", { errorMessage: "Wrong credentials." });
+          .render("auth/login", { errorMessage: "Wrong credentials." });
       }
 
-      // If user is found based on the username, check if the in putted password matches the one saved in the database
+      // If user is found based on the email, check if the in putted password matches the one saved in the database
       bcrypt.compare(password, user.password).then((isSamePassword) => {
         if (!isSamePassword) {
           return res
             .status(400)
-            .render("login", { errorMessage: "Wrong credentials." });
+            .render("auth/login", { errorMessage: "Wrong credentials." });
         }
         req.session.user = user;
         // req.session.user = user._id; // ! better and safer but in this case we saving the entire user object
