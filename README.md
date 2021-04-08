@@ -2,7 +2,7 @@
 
 ## Description
 
-Describe your project in one/two lines.
+Job-board like website to advertise job offers and demands.
 
 ## User Stories
 
@@ -23,17 +23,7 @@ List of other features outside of the MVPs scope
 
 User profile:
 
-- see my profile
-- upload my profile picture
-- see other users profile
-- list of events created by the user
-- list events the user is attending
-
 Geo Location:
-
-- add geolocation to events when creating
-- show event in a map in event detail page
-- show all events in a map in the event list page
 
 Homepage
 
@@ -41,45 +31,78 @@ Homepage
 
 ## ROUTES:
 
+    - IF NOT LOGGED IN:
+
 - GET /
-  - renders the homepage
+  - renders index.hbs
 - GET /auth/signup
-  - redirects to / if user logged in
-  - renders the signup form (with flash msg)
+  - renders signup.hbs
 - POST /auth/signup
-  - redirects to / if user logged in
   - body:
-    - username
+    - name
+    - city
     - email
     - password
 - GET /auth/login
-  - redirects to / if user logged in
-  - renders the login form (with flash msg)
+  - renders login.hbs
 - POST /auth/login
-  - redirects to / if user logged in
   - body:
-    - username
+    - email
     - password
 - POST /auth/logout
 
   - body: (empty)
 
-- GET /events
-  - renders the event list + the create form
-- POST /events/create
-  - redirects to / if user is anonymous
+    - ONLY WHEN LOGGED IN:
+
+- GET /posting/result
+  - renders post-results.hbs
+- GET /posting/new
+  - renders post-form.hbs
+- POST /posting/new
   - body:
-    - name
-    - date
-    - location
+    - title
     - description
-- GET /events/:id
-  - renders the event detail page
-  - includes the list of attendees
-  - attend button if user not attending yet
-- POST /events/:id/attend
-  - redirects to / if user is anonymous
-  - body: (empty - the user is already stored in the session)
+    - location
+    - date
+    - adress
+    - phoneNumber
+    - insurance
+    - hourlyFee
+    - image
+- GET /posting/view
+  - renders post.hbs
+- GET /posting/edit
+  - renders edit-post.hbs
+- POST /posting/edit
+  - body:
+    - title
+    - description
+    - location
+    - date
+    - adress
+    - phoneNumber
+    - insurance
+    - hourlyFee
+    - image
+- POST /posting/delete
+  - body: (empty)
+  - redirects to profile.hbs
+- GET /profile
+  - renders profile.hbs
+- GET /profile/edit
+  - renders edit-profile.hbs
+- POST /profile/edit
+  - body:
+    - firstName
+    - lastName
+    - location
+    - email
+    - image
+- GET /message/inbox
+  - renders inbox.hbs
+- GET /message/new
+  - renders write-message.hbs
 
 ## Models
 
@@ -89,6 +112,7 @@ User model
 firstName: String,
 lastName: String,
 location: [ENUM], required
+image: String,
 email: String, required, unique
 password: String, required
 posting: [String]
@@ -127,7 +151,7 @@ https://pipl.ir/
 
 The url to your repository and to your deployed project
 
-[Repository Link](http://github.com)
+[Repository Link](https://github.com/Praa199/Jobby.git)
 
 [Deploy Link](http://heroku.com)
 
