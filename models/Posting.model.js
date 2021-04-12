@@ -34,6 +34,7 @@ const postingSchema = new Schema({
     type: [String],
     default: [""],
   },
+  postedBy: { type: Schema.Types.ObjectId, ref: "UserModel" },
 });
 
 const PostingModel = model("PostingData", postingSchema);

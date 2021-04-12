@@ -1,5 +1,35 @@
 <h1>Edit Post</h1>
+{{#with posting}}
 <form action="/routes/posting.route.js" method="POST">
-  <label for="">Title</label>
-  <input type="text" name="title" id="">
+  <label for="">Post Title</label>
+  <input type="text" name="title">
+  <br>
+  <label for="">Describe It</label>
+  <input type="text" name="description" value="{{description}}">
+  <br>
+  <label for="">Where?</label>
+  <input type=" text" name="location" value="{{location}}">
+  <br>
+  <label for="">Date</label>
+  <input type=" date" name="date" value="{{date}}">
+  <br>
+  <label for="">Address (optional)</label>
+  <input type=" text" name="address" value="{{address}}">
+  <br>
+  <label for="">Contact Number (optional)</label>
+  <input type=" tel" name="phoneNumber" value="{{phoneNumber}}">
+  <br>
+  <label for="">Ensured?</label>
+  <input type=" text" name="insurance" value="{{insurance}}">
+  <br>
+  <label for="">Wage?</label>
+  <input type=" number" name="hourlyFee" value="{{hourlyFee}}">
+  <br>
+  <label for="">Images</label>
+  <input type=" file" name="image" value="{{image}}">
+  <br>
+  <br>
+
+  <button type=" submit">Submit</button>
 </form>
+{{/posting}}
