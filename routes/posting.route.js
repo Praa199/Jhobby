@@ -1,7 +1,9 @@
 const express = require("express");
-const PostingModel = require("../models/Posting.model");
+const UserModel = require("../models/User.model");
 
 const router = express.Router();
+
+const isLoggedIn = require("../middlewares/isLoggedIn");
 
 router.get("/result", (req, res, next) => {
   PostingModel.find()
@@ -14,27 +16,68 @@ router.get("/result", (req, res, next) => {
     });
 });
 
-router.get("/new", (req, res, next) => {
-  console.log("new-post****");
+router.get("/new", isLoggedIn, (req, res, next) => {
   res.render("posting/post-form.hbs");
 });
 
 router.post("/new", (req, res, next) => {
-  console.log("new-post-form****");
-  const { title, location } = req.body;
-  PostingModel.create()
-    .then((result) => {
-      res.render("posting/post-form.hbs");
+  const {
+    title,
+    description,
+    location,
+    address,
+    phoneNumber,
+    insurance,
+    hourlyFee,
+    image,
+  } = req.body;
+  UserModel.findByIdAndUpdate(
+    req.session.user._id,
+    {
+      posting: req.body,
+    },
+    { new: true }
+  )
+    .then((User) => {
+      res.redirect("/profile");
     })
-    .catch((err) => {});
+    .catch((err) => {
+      console.log("new-post-error***", err);
+    });
 });
 
 router.get("/view", (req, res, next) => {
   res.render("posting/post.hbs");
 });
 
-router.get("/edit", (req, res, next) => {
+router.get("/edit", isLoggedIn, (req, res, next) => {
   res.render("posting/edit-post.hbs");
+});
+
+router.post("/edit", (req, res, next) => {
+  const {
+    title,
+    description,
+    location,
+    address,
+    phoneNumber,
+    insurance,
+    hourlyFee,
+    image,
+  } = req.body;
+  UserModel.findByIdAndUpdate(
+    req.session.user._id,
+    {
+      posting: req.body,
+    },
+    { new: true }
+  )
+    .then((User) => {
+      res.redirect("/profile");
+    })
+    .catch((err) => {
+      console.log("new-post-error***", err);
+    });
 });
 
 router.get("/delete", (req, res, next) => {
@@ -49,12 +92,5 @@ router.get("/:post", (req, res, next) => {
     })
     .catch((err) => {});
 });
-
-// router.get("/lucky")
-
-// router.get("/result", (req, res, next) => {
-//   console.log("something****");
-//   res.render("posting/post-results");
-// });
 
 module.exports = router;

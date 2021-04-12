@@ -1,5 +1,33 @@
 <h1>Create Post</h1>
-<form action="/routes/posting.route.js" method="post">
-  <label for="">Title</label>
-  <input type="text" name="title" id="">
+<form action="/posting/new" method="post">
+  <label for="">Post Title</label>
+  <input type="text" name="title">
+  <br>
+  <label for="">Describe It</label>
+  <input type="text" name="description">
+  <br>
+  <label for="">Where?</label>
+  <input type="text" name="location">
+  <br>
+  <label for="">Date</label>
+  <input type="date" name="date">
+  <br>
+  <label for="">Address (optional)</label>
+  <input type="text" name="address">
+  <br>
+  <label for="">Contact Number (optional)</label>
+  <input type="tel" name="phoneNumber">
+  <br>
+  <label for="">Ensured?</label>
+  <input type="text" name="insurance">
+  <br>
+  <label for="">Wage?</label>
+  <input type="number" name="hourlyFee">
+  <br>
+  <label for="">Images</label>
+  <input type="file" name="image">
+  <br>
+  <br>
+
+  <button type="submit">Submit</button>
 </form>

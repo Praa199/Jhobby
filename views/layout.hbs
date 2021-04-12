@@ -12,20 +12,31 @@
 <body>
    <nav>
       <div>
-         <a href="/">JOBBY</a>
+         <a href="/">JHOBBY</a>
       </div>
+   </nav>
+   {{#if user}}
+   {{!-- {{#with user}} --}}
+   <nav>
       <div>
          <a href="/posting/result">Home</a>
          <a href="/message/inbox">Inbox</a>
          <a href="/profile">Profile</a>
          <a href="/posting/new">Create Post</a>
-         <a href="/auth/logout"><button>Log Out</button></a>
+         <div>
+            <a href="/auth/logout"><button>Log Out</button></a>
+         </div>
       </div>
+   </nav>
+   {{else }}
+   {{!-- {{/with}} --}}
+   <nav>
       <div>
          <a href="/auth/login"><button>Log In</button></a>
          <a href="/auth/signup"><button>New Account</button></a>
       </div>
    </nav>
+   {{/if }}
 
    {{{body}}}
 

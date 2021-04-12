@@ -2,11 +2,13 @@ const express = require("express");
 
 const router = express.Router();
 
-router.get("/inbox", (req, res, next) => {
+const isLoggedIn = require("../middlewares/isLoggedIn");
+
+router.get("/inbox", isLoggedIn, (req, res, next) => {
   res.render("messages/inbox.hbs");
 });
 
-router.get("/new", (req, res, next) => {
+router.get("/new", isLoggedIn, (req, res, next) => {
   res.render("messages/write-message.hbs");
 });
 

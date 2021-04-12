@@ -19,11 +19,15 @@ router.post("/edit", (req, res, next) => {
     req.session.user._id,
     { firstName, lastName, location, email, images },
     { new: true }
-  ).then((newUser) => {
-    // console.log("newUser:", newUser);
-    req.session.user = newUser;
-    res.redirect("/profile");
-  });
+  )
+    .then((newUser) => {
+      // console.log("newUser:", newUser);
+      req.session.user = newUser;
+      res.redirect("/profile");
+    })
+    .catch((err) => {
+      console.log("edit-profile-error***", err);
+    });
 });
 
 router.get("/:post", (req, res, next) => {

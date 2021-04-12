@@ -24,7 +24,7 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
-  posting: [String],
+  posting: [Object],
 });
 
 const UserModel = model("UserData", userSchema);

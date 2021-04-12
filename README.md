@@ -80,7 +80,7 @@ Homepage
     - description
     - location
     - date
-    - adress
+    - address
     - phoneNumber
     - insurance
     - hourlyFee
@@ -133,7 +133,7 @@ adress: String, required
 phoneNumber: String
 insurance: [ENUM]
 hourlyFee: String
-image: String
+image: [String]
 
 ```
 
