@@ -10,7 +10,6 @@ const isLoggedIn = require("../middlewares/isLoggedIn");
 router.get("/result", (req, res, next) => {
   PostingModel.find()
     .then((result) => {
-      console.log("all users*****");
       res.render("posting/post-results", { result });
     })
     .catch((err) => {
@@ -25,9 +24,6 @@ router.get("/new", isLoggedIn, (req, res, next) => {
 });
 
 router.post("/new", isLoggedIn, (req, res, next) => {
-  // const title = req.body.title
-  // const description = req.body.description
-  // const location = req.body.location
   const {
     title,
     description,
@@ -88,33 +84,32 @@ router.post("/new", isLoggedIn, (req, res, next) => {
         });
       });
   });
-
-  //   UserModel.findByIdAndUpdate(
-  //     req.session.user._id,
-  //     {
-  //       posting: req.body,
-  //     },
-  //     { new: true }
-  //   )
-  //     .then((User) => {
-  //       res.redirect("/profile");
-  //     })
-  //     .catch((err) => {
-  //       console.log("new-post-error***", err);
-  //     });
 });
 
-// router.get("/:view", (req, res, next) => {
-//   PostingModel.findById(req.params.view).populate("postedBy");
-//   res.render("posting/post.hbs");
-// });
-
-router.get("/:edit", isLoggedIn, (req, res, next) => {
-  console.log("posting: req.body***", req.params.edit);
-  // res.render("posting/edit-post.hbs",  { posting: req.body });
+router.get("/:id/view", (req, res, next) => {
+  let id = req.params.id;
+  PostingModel.findById(id)
+    .then((posting) => {
+      res.render("posting/post", { posting });
+    })
+    .catch((err) => {
+      console.log("error showing single post***", err);
+    });
 });
 
-router.post("/edit", (req, res, next) => {
+router.get("/:id/edit", isLoggedIn, (req, res, next) => {
+  let id = req.params.id;
+  PostingModel.findById(id)
+    .then((posting) => {
+      res.render("posting/edit-post", { posting });
+    })
+    .catch((err) => {
+      console.log("error showing edit-post form***", err);
+    });
+});
+
+router.post("/:id/edit", isLoggedIn, (req, res, next) => {
+  let id = req.params.id;
   const {
     title,
     description,
@@ -126,13 +121,20 @@ router.post("/edit", (req, res, next) => {
     image,
   } = req.body;
   PostingModel.findByIdAndUpdate(
-    req.session.user._id,
+    id,
     {
-      posting: req.body,
+      title,
+      description,
+      location,
+      address,
+      phoneNumber,
+      insurance,
+      hourlyFee,
+      image,
     },
     { new: true }
   )
-    .then((User) => {
+    .then((result) => {
       res.redirect("/profile");
     })
     .catch((err) => {
@@ -140,15 +142,11 @@ router.post("/edit", (req, res, next) => {
     });
 });
 
-router.get("/delete", (req, res, next) => {
-  res.redirect("/profile");
-});
-
-router.get("/:post", (req, res, next) => {
-  PostingModel.findById()
+router.get("/:id/delete", (req, res, next) => {
+  let id = req.params.id;
+  PostingModel.findByIdAndDelete(id)
     .then((result) => {
-      console.log(":post****");
-      res.render("posting/post", { result });
+      res.redirect("/profile");
     })
     .catch((err) => {});
 });

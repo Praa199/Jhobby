@@ -12,9 +12,8 @@
     <a href="/posting/new"><button>New Post</button></a>
     <div>
       {{#each posting }}
-      <a href="/posting/view">
+      <a href="/posting/{{this._id}}/view">
         <h3>
-          {{posting.title}}
           {{this.title}}
         </h3>
 
@@ -25,10 +24,10 @@
       </p>
       <div>
         0.0
-        {{this.image}}
+        <img src="{{this.image}}" alt="">
       </div>
-      <a href="/posting/edit"><button>Edit Post</button></a>
-      <a href="/posting/delete"><button>Remove Post</button></a>
+      <a href="/posting/{{this._id}}/edit"><button>Edit Post</button></a>
+      <a href="/posting/{{this._id}}/delete"><button>Remove Post</button></a>
       {{/each}}
     </div>
   </div>

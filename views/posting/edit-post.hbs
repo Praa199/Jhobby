@@ -1,35 +1,35 @@
 <h1>Edit Post</h1>
-{{#with posting}}
-<form action="/routes/posting.route.js" method="POST">
+{{!-- {{#with posting}} --}}
+<form action="/posting/{{posting._id}}/edit" method="POST">
   <label for="">Post Title</label>
-  <input type="text" name="title">
+  <input type="text" name="title" value="{{posting.title}}">
   <br>
   <label for="">Describe It</label>
-  <input type="text" name="description" value="{{description}}">
+  <input type="text" name="description" value="{{posting.description}}">
   <br>
   <label for="">Where?</label>
-  <input type=" text" name="location" value="{{location}}">
+  <input type=" text" name="location" value="{{posting.location}}">
   <br>
   <label for="">Date</label>
-  <input type=" date" name="date" value="{{date}}">
+  <input type=" date" name="date">
   <br>
   <label for="">Address (optional)</label>
-  <input type=" text" name="address" value="{{address}}">
+  <input type=" text" name="address" value="{{posting.address}}">
   <br>
   <label for="">Contact Number (optional)</label>
-  <input type=" tel" name="phoneNumber" value="{{phoneNumber}}">
+  <input type=" tel" name="phoneNumber" value="{{posting.phoneNumber}}">
   <br>
   <label for="">Ensured?</label>
-  <input type=" text" name="insurance" value="{{insurance}}">
+  <input type=" text" name="insurance" value="{{posting.insurance}}">
   <br>
   <label for="">Wage?</label>
-  <input type=" number" name="hourlyFee" value="{{hourlyFee}}">
+  <input type=" number" name="hourlyFee" value="{{posting.hourlyFee}}">
   <br>
   <label for="">Images</label>
-  <input type=" file" name="image" value="{{image}}">
+  <input type=" file" name="image" value="{{posting.image}}">
   <br>
   <br>
 
   <button type=" submit">Submit</button>
 </form>
-{{/posting}}
+{{!-- {{/posting}} --}}

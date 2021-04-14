@@ -17,7 +17,9 @@ const postingSchema = new Schema({
   location: {
     type: String,
   },
-  date: Date,
+  date: {
+    type: String,
+  },
   adress: {
     type: Object,
   },

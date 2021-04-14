@@ -1,2 +1,6 @@
-<h1>This is the general view of the post</h1>
-<a href=""><Button>Edit Post</Button></a>
+<h1>This is the general view of: {{posting.title}}</h1>
+<p>{{posting.description}}</p>
+{{#if user}}
+<a href="/posting/{{posting._id}}/edit"><button>Edit Post</button></a>
+<a href="/posting/{{posting._id}}/delete"><button>Remove Post</button></a>
+{{/if}}
