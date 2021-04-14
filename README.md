@@ -19,6 +19,14 @@ Job-board like website to advertise job offers and demands through posts created
 
 List of other features outside of the MVPs scope
 
+### Administration:
+
+- create admin accounts to moderate the content
+
+### Authentication:
+
+- email validation
+
 ### User profile:
 
 - upload a profile picture or choose from a default image
@@ -30,111 +38,136 @@ List of other features outside of the MVPs scope
 ### Posts
 
 - evaluate advertised activity
+- add the date when post was created
+- view pictures if any
+- choose between offering or searching for service
 
 ### Messaging
 
 - messaging function among registered users
 
+### About, FAQ, Contact
+
+- create routes and pages
+
 - ...
 
-## ROUTES:
+## ROUTES
 
-    ### - IF NOT LOGGED IN:
+### IF NOT LOGGED IN:
 
 > - GET /
 >   > - renders index.hbs
+
 > - GET /auth/signup
 >   > - renders signup.hbs
+
 > - POST /auth/signup
 >   > - body:
-
-    - name
-    - city
-    - email
-    - password
+>   >   > - name
+>   >   > - city
+>   >   > - email
+>   >   > - password
 
 > - GET /auth/login
 >   > - renders login.hbs
+
 > - POST /auth/login
 >   > - body:
+>   >   > - email
+>   >   > - password
 
-    - email
-    - password
-
-    ### - ONLY WHEN LOGGED IN:
+### - ONLY WHEN LOGGED IN:
 
 > - GET /posting/result
 >   > - renders post-results.hbs
+
 > - GET /posting/new
 >   > - renders post-form.hbs
+
 > - POST /posting/new
 >   > - body:
-
-    - title
-    - description
-    - location
-    - date
-    - adress
-    - phoneNumber
-    - insurance
-    - hourlyFee
-    - image
+>   >   > - title
+>   >   > - description
+>   >   > - location
+>   >   > - date
+>   >   > - adress
+>   >   > - phoneNumber
+>   >   > - insurance
+>   >   > - hourlyFee
+>   >   > - image
 
 > - GET /posting/view
 >   > - renders post.hbs
+
 > - GET /posting/edit
 >   > - renders edit-post.hbs
+
 > - POST /posting/edit
 >   > - body:
-
-    - title
-    - description
-    - location
-    - date
-    - address
-    - phoneNumber
-    - insurance
-    - hourlyFee
-    - image
+>   >   > - title
+>   >   > - description
+>   >   > - location
+>   >   > - date
+>   >   > - address
+>   >   > - phoneNumber
+>   >   > - insurance
+>   >   > - hourlyFee
+>   >   > - image
 
 > - POST /posting/delete
 >   > - body: (empty)
 >   > - redirects to profile.hbs
+
 > - GET /profile
 >   > - renders profile.hbs
 > - GET /profile/edit
 >   > - renders edit-profile.hbs
+
 > - POST /profile/edit
 >   > - body:
-
-    - firstName
-    - lastName
-    - location
-    - email
-    - image
+>   >   > - firstName
+>   >   > - lastName
+>   >   > - location
+>   >   > - email
+>   >   > - image
 
 > - GET /message/inbox
 >   > - renders inbox.hbs
+
 > - GET /message/new
+>   > - renders write-message.hbs
 
-> > - renders write-message.hbs
->
 > - POST /auth/logout
-
-> > - body: (empty)
+>   > - body: (empty)
 
 ## Models
 
 ### User model
 
 ```
-firstName: String,
-lastName: String,
-location: [ENUM], required
-image: String,
-email: String, required, unique
-password: String, required
-posting: [String]
+  firstName: {
+    type: String,
+  },
+  lastName: {
+    type: String,
+  },
+  location: {
+    type: String,
+    default: "Berlin",
+    enum: LOCATION_ENUM,
+    required: true,
+  },
+  email: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  password: {
+    type: String,
+    required: true,
+  },
+  posting: [Object],
 
 
 
@@ -144,36 +177,65 @@ posting: [String]
 
 ```
 
-title: String, required
-description: String, required
-location: [ENUM], required
-date: Date, default
-adress: String, required
-phoneNumber: String
-insurance: [ENUM]
-hourlyFee: String
-image: [String]
-postedBy: User
+title: {
+    type: String,
+    required: true,
+    min: 5,
+  },
+  description: {
+    type: String,
+    required: true,
+    min: 20,
+    max: 100,
+  },
+  location: {
+    type: String,
+    required: true,
+  },
+  date: {
+    type: String,
+  },
+  adress: {
+    type: Object,
+  },
+  phoneNumber: {
+    type: String,
+  },
+  insurance: {
+    enum: ["true", "false"],
+  },
+  hourlyFee: {
+    type: String,
+  },
+  image: {
+    type: [String],
+    default: [""],
+  },
+    postedBy: { type: Schema.Types.ObjectId, ref: "UserModel" },
 
 ```
 
 ## Links
 
-http://api.dataatwork.org/
+### APIs where some of the seeded fake data came from
 
-https://fakerapi.it/
+[dataatwork](http://api.dataatwork.org/)
 
-https://pipl.ir/
+[fakerapi](https://fakerapi.it/)
 
-https://www.figma.com/file/750wTgnt6w0jgAsUNPbhfd/Figma-Wireframe-Kit-Free-Community?node-id=6%3A72
+[pipl](https://pipl.ir/)
+
+### Figma
+
+[Wireframe](https://www.figma.com/file/750wTgnt6w0jgAsUNPbhfd/Figma-Wireframe-Kit-Free-Community?node-id=6%3A72)
 
 ### Git
 
 The url to your repository and to your deployed project
 
-[Repository Link](https://github.com/Praa199/Jobby.git)
+[Repository Link](https://github.com/Praa199/Jhobby.git)
 
-[Deploy Link](http://heroku.com)
+[Deploy Link](http://jhobby.heroku.com)
 
 ### Slides
 

@@ -2,17 +2,22 @@
 {{#with user}}
 <form action="/profile/edit" method="POST">
   <label for="">First Name</label>
+  <br>
   <input type="text" name="firstName" value="{{firstName}}">
   <br>
   <label for="">Last Name</label>
+  <br>
   <input type="text" name="lastName" value="{{lastName}}">
   <br>
   <label for="">City</label>
+  <br>
   <input type="text" name="location" value="{{location}}">
   <br>
   <label for="">Email</label>
+  <br>
   <input type="email" name="email" value="{{email}}">
-
+  <br>
+  <br>
   <button type="submit">Submit</button>
 </form>
 

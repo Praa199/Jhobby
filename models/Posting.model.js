@@ -16,6 +16,7 @@ const postingSchema = new Schema({
   },
   location: {
     type: String,
+    required: true,
   },
   date: {
     type: String,

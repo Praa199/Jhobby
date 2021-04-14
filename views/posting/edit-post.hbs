@@ -2,31 +2,42 @@
 {{!-- {{#with posting}} --}}
 <form action="/posting/{{posting._id}}/edit" method="POST">
   <label for="">Post Title</label>
+  <br>
   <input type="text" name="title" value="{{posting.title}}">
   <br>
   <label for="">Describe It</label>
+  <br>
   <input type="text" name="description" value="{{posting.description}}">
   <br>
   <label for="">Where?</label>
+  <br>
   <input type=" text" name="location" value="{{posting.location}}">
   <br>
   <label for="">Date</label>
-  <input type=" date" name="date">
   <br>
   <label for="">Address (optional)</label>
+  <br>
   <input type=" text" name="address" value="{{posting.address}}">
   <br>
   <label for="">Contact Number (optional)</label>
+  <br>
   <input type=" tel" name="phoneNumber" value="{{posting.phoneNumber}}">
   <br>
   <label for="">Ensured?</label>
-  <input type=" text" name="insurance" value="{{posting.insurance}}">
+  <br>
+  <select name="insurance" value="{{posting.insurance}}">
+    <option value="">--Please choose an option--</option>
+    <option value="yes">Yes</option>
+    <option value="no">No</option>
+  </select>
   <br>
   <label for="">Wage?</label>
+  <br>
   <input type=" number" name="hourlyFee" value="{{posting.hourlyFee}}">
   <br>
   <label for="">Images</label>
-  <input type=" file" name="image" value="{{posting.image}}">
+  <br>
+  <input type="file" name="image" src="{{posting.image}}">
   <br>
   <br>
 
