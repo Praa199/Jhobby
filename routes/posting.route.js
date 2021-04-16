@@ -18,8 +18,8 @@ router.get("/result", (req, res, next) => {
 });
 
 router.get("/new", isLoggedIn, (req, res, next) => {
-  res.render("posting/post-form.hbs", {
-    locations: LOCATION_ENUM,
+  res.render("posting/post-form", {
+    location: LOCATION_ENUM,
   });
 });
 
@@ -36,27 +36,33 @@ router.post("/new", isLoggedIn, (req, res, next) => {
   } = req.body;
 
   if (!title) {
-    res.render("/posting/post-form", {
+    res.render("posting/post-form", {
       errorMessage: "Provide a title according to your post ",
     });
     return;
   }
 
   if (!description) {
-    return res.render("/posting/post-form", {
+    return res.render("posting/post-form", {
       errorMessage: "You need to write a description",
     });
   }
 
+  if (!location) {
+    return res.render("posting/post-form", {
+      errorMessage: "Please specify a location",
+    });
+  }
+
   if (!hourlyFee) {
-    return res.render("/posting/post-form", {
+    return res.render("posting/post-form", {
       errorMessage: "Please provide a price",
     });
   }
 
   PostingModel.findOne({ title }).then((found) => {
     if (found) {
-      return res.render("/posting/post-form", {
+      return res.render("posting/post-form", {
         errorMessage: "This post title exists already",
       });
     }
@@ -101,7 +107,7 @@ router.get("/:id/edit", isLoggedIn, (req, res, next) => {
   let id = req.params.id;
   PostingModel.findById(id)
     .then((posting) => {
-      res.render("posting/edit-post", { posting });
+      res.render("posting/edit-post", { posting, locations: LOCATION_ENUM });
     })
     .catch((err) => {
       console.log("error showing edit-post form***", err);
@@ -120,6 +126,31 @@ router.post("/:id/edit", isLoggedIn, (req, res, next) => {
     hourlyFee,
     image,
   } = req.body;
+  if (!title) {
+    res.render("posting/edit-post", {
+      errorMessage: "Provide a title according to your post ",
+    });
+    return;
+  }
+
+  if (!description) {
+    return res.render("posting/edit-post", {
+      errorMessage: "You need to write a description",
+    });
+  }
+
+  if (!location) {
+    return res.render("posting/edit-post", {
+      errorMessage: "Please specify a location",
+    });
+  }
+
+  if (!hourlyFee) {
+    return res.render("posting/edit-post", {
+      errorMessage: "Please provide a price",
+    });
+  }
+
   PostingModel.findByIdAndUpdate(
     id,
     {

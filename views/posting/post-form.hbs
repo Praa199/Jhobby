@@ -10,7 +10,12 @@
   <br>
   <label for="">Where?</label>
   <br>
-  <input type="select" name="location">
+  <select name="location">
+    <option value="">--Please select your City--</option>
+    {{#each location}}
+    <option value="{{this}}">{{this}}</option>
+    {{/each}}
+  </select>
   <br>
   <label for="">Date</label>
   <br>
@@ -24,9 +29,13 @@
   <br>
   <input type="tel" name="phoneNumber">
   <br>
-  <label for="">Ensured?</label>
+  <label for="">Insured?</label>
   <br>
-  <input type="text" name="insurance">
+  <select name="insurance">
+    <option value="">--Please choose an option--</option>
+    <option value="true">Yes</option>
+    <option value="false">No</option>
+  </select>
   <br>
   <label for="">Wage?</label>
   <br>

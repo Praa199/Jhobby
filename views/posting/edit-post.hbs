@@ -11,7 +11,12 @@
   <br>
   <label for="">Where?</label>
   <br>
-  <input type=" text" name="location" value="{{posting.location}}">
+  <select name="location">
+    <option value="{{posting.location}}">--Please select your City--</option>
+    {{#each locations}}
+    <option value="{{this}}">{{this}}</option>
+    {{/each}}
+  </select>
   <br>
   <label for="">Date</label>
   <br>
@@ -23,12 +28,12 @@
   <br>
   <input type=" tel" name="phoneNumber" value="{{posting.phoneNumber}}">
   <br>
-  <label for="">Ensured?</label>
+  <label for="">Insured?</label>
   <br>
   <select name="insurance" value="{{posting.insurance}}">
     <option value="">--Please choose an option--</option>
-    <option value="yes">Yes</option>
-    <option value="no">No</option>
+    <option value="tue">Yes</option>
+    <option value="false">No</option>
   </select>
   <br>
   <label for="">Wage?</label>

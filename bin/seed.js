@@ -5,11 +5,11 @@ require("../db/index");
 
 // require the model
 
-// let PostingModel = require("../models/User.model.js");
+// let UserModel = require("../models/User.model.js");
 
 // // insert into the model
 // // inserting many documents
-// PostingModel.insertMany([
+// UserModel.insertMany([
 //   {
 //     firstName: "Leanne",
 //     lastName: "Graham",
@@ -70,15 +70,7 @@ PostingModel.insertMany([
     description: "dyes animals for movies and marketing campaigns",
     location: "Amsterdam",
     date: new Date().toString(),
-    adress: {
-      street: "Kulas Light",
-      suite: "Apt. 556",
-      zipcode: "92998-3874",
-      geo: {
-        lat: "-37.3159",
-        lng: "81.1496",
-      },
-    },
+    address: "Kulas Light Apt. 556 92998-3874",
     phoneNumber: "1-770-736-8031 x56442",
     insurance: "false",
     hourlyFee: "15.00",
@@ -89,15 +81,7 @@ PostingModel.insertMany([
     description: "bartender",
     location: "Berlin",
     date: new Date().toString(),
-    adress: {
-      street: "Skiles Walks",
-      suite: "Suite 351",
-      zipcode: "33263",
-      geo: {
-        lat: "-31.8129",
-        lng: "62.5342",
-      },
-    },
+    address: "Skiles Walks Suite 351 33263",
     phoneNumber: "010-692-6593 x09125",
     insurance: "true",
     hourlyFee: "15.00",
@@ -108,15 +92,7 @@ PostingModel.insertMany([
     description: "dog catcher",
     location: "Madrid",
     date: new Date().toString(),
-    adress: {
-      street: "Rex Trail",
-      suite: "Suite 280",
-      zipcode: "58804-1099",
-      geo: {
-        lat: "24.8918",
-        lng: "21.8984",
-      },
-    },
+    address: "Rex Trail Suite 280 58804-1099",
     phoneNumber: "1-463-123-4447",
     insurance: "false",
     hourlyFee: "15.00",
@@ -127,15 +103,7 @@ PostingModel.insertMany([
     description: "founder",
     location: "Paris",
     date: new Date().toString(),
-    adress: {
-      street: "Norberto Crossing",
-      suite: "Apt. 950",
-      zipcode: "23505-1337",
-      geo: {
-        lat: "-71.4197",
-        lng: "71.7478",
-      },
-    },
+    address: "Norberto Crossing Apt. 950 23505-1337",
     phoneNumber: "493-170-9623 x156",
     insurance: "true",
     hourlyFee: "15.00",
@@ -147,15 +115,7 @@ PostingModel.insertMany([
       "chooses what items should be featured on the website front page",
     location: "Amsterdam",
     date: new Date().toString(),
-    adress: {
-      street: "Ellsworth Summit",
-      suite: "Suite 729",
-      zipcode: "45169",
-      geo: {
-        lat: "-14.3990",
-        lng: "-120.7677",
-      },
-    },
+    address: "Ellsworth Summit Suite 729 45169",
     phoneNumber: "(254)954-1289",
     insurance: "false",
     hourlyFee: "15.00",
@@ -166,15 +126,7 @@ PostingModel.insertMany([
     description: "chief executive officer",
     location: "Berlin",
     date: new Date().toString(),
-    adress: {
-      street: "Victor Plains",
-      suite: "Suite 879",
-      zipcode: "90566-7771",
-      geo: {
-        lat: "-43.9509",
-        lng: "-34.4618",
-      },
-    },
+    address: "Victor Plains Suite 879 90566-7771",
     phoneNumber: "1-477-935-8478 x6430",
     insurance: "true",
     hourlyFee: "15.00",
@@ -185,15 +137,7 @@ PostingModel.insertMany([
     description: "ensures sustenance of values and a positive environment",
     location: "Madrid",
     date: new Date().toString(),
-    adress: {
-      street: "Douglas Extension",
-      suite: "Suite 847",
-      zipcode: "59590-4157",
-      geo: {
-        lat: "-68.6102",
-        lng: "-47.0653",
-      },
-    },
+    address: "Douglas Extension Suite 847 59590-4157",
     phoneNumber: "586.493.6943 x140",
     insurance: "false",
     hourlyFee: "15.00",
@@ -204,15 +148,7 @@ PostingModel.insertMany([
     description: "digital marketing executive",
     location: "Paris",
     date: new Date().toString(),
-    adress: {
-      street: "Dayna Park",
-      suite: "Suite 449",
-      zipcode: "76495-3109",
-      geo: {
-        lat: "24.6463",
-        lng: "-168.8889",
-      },
-    },
+    address: "Dayna Park Suite 449 76495-3109",
     phoneNumber: "(775)976-6794 x41206",
     insurance: "true",
     hourlyFee: "15.00",
@@ -224,15 +160,7 @@ PostingModel.insertMany([
       "helps financial institutions identify the vulnerabilities of their web applications",
     location: "Amsterdam",
     date: new Date().toString(),
-    adress: {
-      street: "Hoeger Mall",
-      suite: "Apt. 692",
-      zipcode: "53919-4257",
-      geo: {
-        lat: "29.4572",
-        lng: "-164.2990",
-      },
-    },
+    address: "Hoeger Mall Apt. 692 53919-4257",
     phoneNumber: "024-648-3804",
     insurance: "false",
     hourlyFee: "15.00",
@@ -243,15 +171,7 @@ PostingModel.insertMany([
     description: "financial services consultant",
     location: "Berlin",
     date: new Date().toString(),
-    adress: {
-      street: "Kattie Turnpike",
-      suite: "Suite 198",
-      zipcode: "31428-2261",
-      geo: {
-        lat: "-38.2386",
-        lng: "57.2232",
-      },
-    },
+    address: "Kattie Turnpike Suite 198 31428-2261",
     phoneNumber: "024-648-3804",
     insurance: "true",
     hourlyFee: "15.00",

@@ -30,6 +30,7 @@ List of other features outside of the MVPs scope
 ### User profile:
 
 - upload a profile picture or choose from a default image
+- revise forms for better functioning
 
 ### Geo Location:
 
@@ -37,6 +38,8 @@ List of other features outside of the MVPs scope
 
 ### Posts
 
+- revise forms for better functioning
+- only post authors can edit them
 - evaluate advertised activity
 - add the date when post was created
 - view pictures if any
@@ -241,4 +244,4 @@ The url to your repository and to your deployed project
 
 The url to your presentation slides
 
-[Slides Link](http://slides.com)
+[Slides](https://docs.google.com/presentation/d/1Hfa7HRnoqGItm5pdfzFYYjhRZ6WKM_yG6vc_1PxU6OM/edit?usp=sharing)

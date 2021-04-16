@@ -21,13 +21,14 @@ const postingSchema = new Schema({
   date: {
     type: String,
   },
-  adress: {
-    type: Object,
+  address: {
+    type: String,
   },
   phoneNumber: {
     type: String,
   },
   insurance: {
+    type: String,
     enum: ["true", "false"],
   },
   hourlyFee: {
