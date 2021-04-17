@@ -9,7 +9,19 @@ const isLoggedIn = require("../middlewares/isLoggedIn");
 const shouldNotBeLoggedIn = require("../middlewares/shouldNotBeLoggedIn");
 
 router.get("/result", (req, res, next) => {
+  if (req.session.user) {
+    const userLocation = req.session.user.location;
+    console.log("isLoggedIn****", userLocation);
+    PostingModel.find({ location: userLocation })
+      .then((result) => {
+        res.render("posting/post-results", { result });
+      })
+      .catch((err) => {
+        console.log("fatal error ***", err);
+      });
+  }
   PostingModel.find()
+    .limit(4)
     .then((result) => {
       res.render("posting/post-results", { result });
     })
