@@ -1,6 +1,25 @@
 <h1>This is the general view of: {{posting.title}}</h1>
 <p>{{posting.description}}</p>
-{{#if user}}
+<p>{{posting.date}}</p>
+<h2>€ {{posting.hourlyFee}} </h2>
+<h3>{{posting.phoneNumber}}</h3>
+<img src="{{posting.image}}" alt="">
+{{#if postOwner}}
 <a href="/posting/{{posting._id}}/edit"><button>Edit Post</button></a>
 <a href="/posting/{{posting._id}}/delete"><button>Remove Post</button></a>
+{{/if}}
+{{#if user}}
+<form method="POST" action="/events/{{posting._id}}/rating">
+  <p>Please give your valuable opinion:</p>
+  <label for="ratings">How fun was this event</label>
+  <select name="ratings" id="rating">
+    <option value="1">1*</option>
+    <option value="2">2*</option>
+    <option value="3">3*</option>
+    <option value="4">4*</option>
+    <option value="5">5*</option>
+  </select>
+
+  <button type="submit">Create a rating</button>
+</form>
 {{/if}}

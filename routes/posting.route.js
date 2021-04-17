@@ -6,6 +6,7 @@ const LOCATION_ENUM = require("../utils/constants");
 const router = express.Router();
 
 const isLoggedIn = require("../middlewares/isLoggedIn");
+const shouldNotBeLoggedIn = require("../middlewares/shouldNotBeLoggedIn");
 
 router.get("/result", (req, res, next) => {
   PostingModel.find()
@@ -26,6 +27,7 @@ router.get("/new", isLoggedIn, (req, res, next) => {
 router.post("/new", isLoggedIn, (req, res, next) => {
   const {
     title,
+    date,
     description,
     location,
     address,
@@ -70,6 +72,7 @@ router.post("/new", isLoggedIn, (req, res, next) => {
     PostingModel.create({
       title,
       description,
+      date,
       location,
       address,
       phoneNumber,

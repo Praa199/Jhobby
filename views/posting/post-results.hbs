@@ -1,18 +1,44 @@
 <h1>This is the search result</h1>
-<div>
+{{#if user}}
+<article>
   {{#each result }}
-  <a href="/posting/{{this._id}}/view">
-    <h3>
-      {{this.title}}
-    </h3>
-  </a>
-  <p>
-    {{this.description}}
-  </p>
   <div>
-    {{this.image}}
+    <a href="/posting/{{this._id}}/view">
+      <h2>
+        {{this.title}}
+      </h2>
+    </a>
   </div>
-  <a href=""><button>Contact</button></a>
-  <a href=""><button>Evaluate</button></a>
+  <div>
+    <p>
+      {{this.description}}
+    </p>
+    <h2> € {{this.hourlyFee}}</h2>
+  </div>
+  <div>
+    <img src="{{this.image}}" alt="">
+  </div>
   {{/each}}
-</div>
+</article>
+{{else}}
+<article>
+  {{#each result }}
+  <div>
+    <a href="/auth/signup">
+      <h2>
+        {{this.title}}
+      </h2>
+    </a>
+  </div>
+  <div>
+    <p>
+      {{this.description}}
+    </p>
+    <h2> € {{this.hourlyFee}}</h2>
+  </div>
+  <div>
+    <img src="{{this.image}}" alt="">
+  </div>
+  {{/each}}
+</article>
+{{/if}}

@@ -1,10 +1,10 @@
 <h1>Profile</h1>
 <div>
   <div>
-    <h3>
+    <h3>Hello
       {{user.firstName}} {{user.lastName}}
     </h3>
-    <h4>{{user.location}}</h4>
+    <h4>from {{user.location}}</h4>
     <img src="{{user.image}}" alt="image" srcset="">
     <a href="/profile/edit"><button>Update Profile</button></a>
   </div>
@@ -12,22 +12,28 @@
     <a href="/posting/new"><button>New Post</button></a>
     <div>
       {{#each posting }}
-      <a href="/posting/{{this._id}}/view">
-        <h3>
-          {{this.title}}
-        </h3>
-
-      </a>
-      <p>
-        description
-        {{this.description}}
-      </p>
       <div>
-        0.0
+        <a href="/posting/{{this._id}}/view">
+          <h3>
+            {{this.title}}
+          </h3>
+        </a>
+        <h2> € {{this.hourlyFee}}</h2>
+        <h3>{{this.date}}</h3>
+      </div>
+      <div>
+        <p>
+          description
+          {{this.description}}
+        </p>
+      </div>
+      <div>
         <img src="{{this.image}}" alt="">
       </div>
-      <a href="/posting/{{this._id}}/edit"><button>Edit Post</button></a>
-      <a href="/posting/{{this._id}}/delete"><button>Remove Post</button></a>
+      <div>
+        <a href="/posting/{{this._id}}/edit"><button>Edit Post</button></a>
+        <a href="/posting/{{this._id}}/delete"><button>Remove Post</button></a>
+      </div>
       {{/each}}
     </div>
   </div>

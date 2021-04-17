@@ -5,60 +5,60 @@ require("../db/index");
 
 // require the model
 
-// let UserModel = require("../models/User.model.js");
+let UserModel = require("../models/User.model.js");
 
-// // insert into the model
-// // inserting many documents
-// UserModel.insertMany([
-//   {
-//     firstName: "Leanne",
-//     lastName: "Graham",
-//     location: "Amsterdam",
-//     email: "Sincere@april.biz",
-//     password: "53919-4257",
-//     posting: [],
-//   },
-//   {
-//     firstName: "Ervin",
-//     lastName: "Howell",
-//     location: "Amsterdam",
-//     email: "Shanna@melissa.tv",
-//     password: "53919-4257",
-//     posting: [],
-//   },
-//   {
-//     firstName: "Clementine",
-//     lastName: "Bauch",
-//     location: "Amsterdam",
-//     email: "Nathan@yesenia.net",
-//     password: "53919-4257",
-//     posting: [],
-//   },
-//   {
-//     firstName: "Patricia",
-//     lastName: "Lebsack",
-//     location: "Amsterdam",
-//     email: "Julianne.OConner@kory.org",
-//     password: "53919-4257",
-//     posting: [],
-//   },
-//   {
-//     firstName: "Chelsey",
-//     lastName: "Dietrich",
-//     email: "Lucio_Hettinger@annie.ca",
-//     password: "53919-4257",
-//     posting: [],
-//   },
-// ])
-//   .then(() => {
-//     console.log("Data seeded");
-//     // always close the connection after seeding
-//     // please make sure you require mongoose at the top of the file
-//     mongoose.connection.close();
-//   })
-//   .catch((error) => {
-//     console.log("Data seeding went wrong!", error);
-//   });
+// insert into the model
+// inserting many documents
+UserModel.insertMany([
+  {
+    firstName: "Leanne",
+    lastName: "Graham",
+    location: "Amsterdam",
+    email: "Sincere@april.biz",
+    password: "53919-4257",
+    posting: [],
+  },
+  {
+    firstName: "Ervin",
+    lastName: "Howell",
+    location: "Amsterdam",
+    email: "Shanna@melissa.tv",
+    password: "53919-4257",
+    posting: [],
+  },
+  {
+    firstName: "Clementine",
+    lastName: "Bauch",
+    location: "Amsterdam",
+    email: "Nathan@yesenia.net",
+    password: "53919-4257",
+    posting: [],
+  },
+  {
+    firstName: "Patricia",
+    lastName: "Lebsack",
+    location: "Amsterdam",
+    email: "Julianne.OConner@kory.org",
+    password: "53919-4257",
+    posting: [],
+  },
+  {
+    firstName: "Chelsey",
+    lastName: "Dietrich",
+    email: "Lucio_Hettinger@annie.ca",
+    password: "53919-4257",
+    posting: [],
+  },
+])
+  .then(() => {
+    console.log("Data seeded");
+    // always close the connection after seeding
+    // please make sure you require mongoose at the top of the file
+    mongoose.connection.close();
+  })
+  .catch((error) => {
+    console.log("Data seeding went wrong!", error);
+  });
 
 let PostingModel = require("../models/Posting.model.js");
 
@@ -66,7 +66,7 @@ let PostingModel = require("../models/Posting.model.js");
 // inserting many documents
 PostingModel.insertMany([
   {
-    title: "animal colourist",
+    title: "needed animal colourist",
     description: "dyes animals for movies and marketing campaigns",
     location: "Amsterdam",
     date: new Date().toString(),
@@ -77,7 +77,7 @@ PostingModel.insertMany([
     image: "http://placeimg.com/640/480/any",
   },
   {
-    title: "beverage dissemination officer",
+    title: "available beverage dissemination officer",
     description: "bartender",
     location: "Berlin",
     date: new Date().toString(),
@@ -88,7 +88,7 @@ PostingModel.insertMany([
     image: "http://placeimg.com/640/480/any",
   },
   {
-    title: "canine relocation specialist",
+    title: "needed canine relocation specialist",
     description: "dog catcher",
     location: "Madrid",
     date: new Date().toString(),
@@ -99,7 +99,7 @@ PostingModel.insertMany([
     image: "http://placeimg.com/640/480/any",
   },
   {
-    title: "chief amazement office",
+    title: "available chief amazement office",
     description: "founder",
     location: "Paris",
     date: new Date().toString(),
@@ -110,7 +110,7 @@ PostingModel.insertMany([
     image: "http://placeimg.com/640/480/any",
   },
   {
-    title: "chief curator",
+    title: "needed chief curator",
     description:
       "chooses what items should be featured on the website front page",
     location: "Amsterdam",
@@ -122,7 +122,7 @@ PostingModel.insertMany([
     image: "http://placeimg.com/640/480/any",
   },
   {
-    title: "chief troublemaker",
+    title: "available chief troublemaker",
     description: "chief executive officer",
     location: "Berlin",
     date: new Date().toString(),
@@ -133,7 +133,7 @@ PostingModel.insertMany([
     image: "http://placeimg.com/640/480/any",
   },
   {
-    title: "culture champion",
+    title: "needed culture champion",
     description: "ensures sustenance of values and a positive environment",
     location: "Madrid",
     date: new Date().toString(),
@@ -144,7 +144,7 @@ PostingModel.insertMany([
     image: "http://placeimg.com/640/480/any",
   },
   {
-    title: "digital dynamo",
+    title: "available digital dynamo",
     description: "digital marketing executive",
     location: "Paris",
     date: new Date().toString(),
@@ -155,7 +155,7 @@ PostingModel.insertMany([
     image: "http://placeimg.com/640/480/any",
   },
   {
-    title: "director of ethical hacking",
+    title: "needed director of ethical hacking",
     description:
       "helps financial institutions identify the vulnerabilities of their web applications",
     location: "Amsterdam",
@@ -167,7 +167,7 @@ PostingModel.insertMany([
     image: "http://placeimg.com/640/480/any",
   },
   {
-    title: "dreams fulfiller",
+    title: "available dreams fulfiller",
     description: "financial services consultant",
     location: "Berlin",
     date: new Date().toString(),

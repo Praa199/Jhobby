@@ -1,7 +1,6 @@
 const { Schema, model } = require("mongoose");
 const LOCATION_ENUM = require("../utils/constants");
 
-// TODO: Please make sure you edit the user model to whatever makes sense in this case
 const postingSchema = new Schema({
   title: {
     type: String,
@@ -18,9 +17,7 @@ const postingSchema = new Schema({
     type: String,
     required: true,
   },
-  date: {
-    type: String,
-  },
+  date: { type: Date },
   address: {
     type: String,
   },
@@ -39,6 +36,11 @@ const postingSchema = new Schema({
     default: [""],
   },
   postedBy: { type: Schema.Types.ObjectId, ref: "UserModel" },
+  ratings: [
+    {
+      type: Number,
+    },
+  ],
 });
 
 const PostingModel = model("PostingData", postingSchema);
