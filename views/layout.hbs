@@ -13,36 +13,100 @@
 </head>
 
 <body>
-   <nav>
-      <div>
-         <a href="/">JHOBBY</a>
-      </div>
-   </nav>
-   {{#if user}}
-   {{!-- {{#with user}} --}}
-   <nav>
-      <div>
-         <a href="/posting/result">Home</a>
-         {{!-- <a href="/message/inbox">Inbox</a> --}}
-         <a href="/profile">Profile</a>
-         <a href="/posting/new">Create Post</a>
-         <div>
-            <a href="/auth/logout"><button>Log Out</button></a>
+
+   <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+         <a class="navbar-brand" href="/">JHOBBY</a>
+         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+         </button>
+         <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            {{#if user}}
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+               <li class="nav-item">
+                  <a class="nav-link" href="/posting/result">Home</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" href="/profile">Profile</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" href="/posting/new">Create a Post</a>
+               </li>
+            </ul>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+               <a href="/auth/logout">
+                  <button class="btn btn-primary me-md-2" type="button">Log Out</button></a>
+            </div>
+            {{else }}
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+               <a href="/auth/login">
+                  <button class="btn btn-primary me-md-2" type="button">Log In</button></a>
+               <a href="/auth/signup">
+                  <button class="btn btn-primary" type="button">New Account</button></a>
+            </div>
+            {{/if }}
          </div>
       </div>
    </nav>
-   {{else }}
-   {{!-- {{/with}} --}}
-   <nav>
-      <div>
-         <a href="/posting/result">Home</a>
-         <a href="/auth/login"><button>Log In</button></a>
-         <a href="/auth/signup"><button>New Account</button></a>
+   {{!-- <div class="background-container">
+      <span class="columns"></span>
+      <span class="columns"></span>
+      <span class="columns"></span>
+      <span class="columns"></span>
+      <span class="columns"></span>
+      <span class="columns"></span>
+      <span class="columns"></span>
+      <span class="columns"></span>
+      <span class="columns"></span>
+      <span class="columns"></span>
+      <span class="columns"></span>
+      <span class="columns"></span>
+   </div> --}}
+   <div id="body-container">
+      {{{body}}}
+   </div>
+   {{#if user}}
+   <footer>
+      <div class="footer-div">
+         <a class="footer-p" href="/"> About
+         </a>
       </div>
-   </nav>
-   {{/if }}
+      <div class="footer-div">
+         <a class="footer-p" href="/"> Q&A
+         </a>
+      </div>
+      <div class="footer-div">
+         <a class="footer-p" href="/"> Contact
+         </a>
+      </div>
+   </footer>
 
-   {{{body}}}
+   {{else}}
+   <footer>
+      <div class="footer-div">
+         <a href="/">
+            <img src="" alt="">
+            <h6>Learn About this Website</h6>
+            <p class="footer-p">About</p>
+         </a>
+      </div class="footer-div">
+      <div class="footer-div">
+         <a href="/">
+            <img src="" alt="">
+            <h6>Commonly asked Questions</h6>
+            <p class="footer-p">Q&A</p>
+         </a>
+      </div>
+      <div class="footer-div">
+         <a href="/">
+            <img src="" alt="">
+            <h6>Get In Contact with the team</h6>
+            <p class="footer-p">Contact</p>
+         </a>
+      </div>
+   </footer>
+   {{/if}}
 
    <script src="/js/script.js"></script>
    <!-- JavaScript Bundle with Popper -->

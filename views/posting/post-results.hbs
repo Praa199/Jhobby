@@ -1,54 +1,14 @@
 <h1>This is the search result</h1>
 {{#if user}}
-<article>
-  {{#each result }}
-  <div>
-    <a href="/posting/{{this._id}}/view">
-      <h2>
-        {{this.title}}
-      </h2>
-    </a>
-  </div>
-  <div>
-    <p>
-      {{this.description}}
-    </p>
-    <h3>{{this.location}}</h3>
-    <h2> € {{this.hourlyFee}}</h2>
-  </div>
-  <div>
-    <img src="{{this.image}}" alt="">
-  </div>
-  {{/each}}
-</article>
-{{else}}
-{{!-- <article>
-  {{#each result }}
-  <div>
-    <a href="/auth/signup">
-      <h2>
-        {{this.title}}
-      </h2>
-    </a>
-  </div>
-  <div>
-    <p>
-      {{this.description}}
-    </p>
-    <h2> € {{this.hourlyFee}}</h2>
-  </div>
-  <div>
-    <img src="{{this.image}}" alt="">
-  </div>
-  {{/each}}
-</article> --}}
-{{#each result }}
 <div class="row row-cols-1 row-cols-md-3 g-4">
+  {{#each result }}
   <div class="col">
-    <div class="card h-100">
+    <div class="card">
       <img src="{{this.image}}" class="card-img-top" alt="{{this.image}}">
       <div class="card-body">
-        <h5 class="card-title">{{this.title}}</h5>
+        <a href="/posting/{{this._id}}/view">
+          <h5 class="card-title">{{this.title}} <br>€ {{this.hourlyFee}}</h5>
+        </a>
         <p class="card-text">{{this.description}}</p>
       </div>
       <div class="card-footer">
@@ -56,6 +16,24 @@
       </div>
     </div>
   </div>
-</div>
-{{/each }}
-{{/if}}
+  {{/each}}
+  {{else}}
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    {{#each result }}
+    <div class="col">
+      <div class="card">
+        <img src="{{this.image}}" class="card-img-top" alt="{{this.image}}">
+        <div class="card-body">
+          <a href="/auth/signup">
+            <h5 class="card-title">{{this.title}}</h5>
+          </a>
+          <p class="card-text">{{this.description}}</p>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">{{this.location}} {{this.date}}</small>
+        </div>
+      </div>
+    </div>
+    {{/each }}
+  </div>
+  {{/if}}

@@ -12,3 +12,30 @@ h1 {
 }
 
 /*# sourceMappingURL=style.css.map */
+
+#body-container {
+  min-height: 80vh;
+  display: flex;
+  justify-content: space-around;
+}
+
+footer {
+  max-width: 90%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+}
+
+.footer-div {
+  max-width: 20%;
+  padding: 0 3rem 0 3rem;
+  font-size: 0.7rem;
+}
+
+.page-container {
+  padding: 10% 20% 0 20%;
+}
+
+.page-container > div {
+  padding-top: 10%;
+}
