@@ -13,11 +13,12 @@ const UserModel = require("../models/User.model");
 // Require necessary middlewares in order to control access to specific routes
 const shouldNotBeLoggedIn = require("../middlewares/shouldNotBeLoggedIn");
 const isLoggedIn = require("../middlewares/isLoggedIn");
+const LOCATION_ENUM = require("../utils/constants");
 
 router.get("/", (req, res) => {});
 
 router.get("/signup", shouldNotBeLoggedIn, (req, res) => {
-  res.render("auth/signup");
+  res.render("auth/signup", { LOCATION_ENUM });
 });
 
 router.post("/signup", shouldNotBeLoggedIn, (req, res) => {

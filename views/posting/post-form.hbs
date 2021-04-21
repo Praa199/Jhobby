@@ -1,56 +1,58 @@
-<h1>Create Post</h1>
-<form action="/posting/new" method="post">
-  <label for="">Post Title</label>
-  <br>
-  <input type="text" name="title">
-  <br>
-  <label for="">Describe It</label>
-  <br>
-  <input type="text" name="description">
-  <br>
-  <label for="">Where?</label>
-  <br>
-  <select name="location">
-    <option value="">--Please select your City--</option>
-    {{#each location}}
-    <option value="{{this}}">{{this}}</option>
-    {{/each}}
-  </select>
-  <br>
-  <label for="">Date</label>
-  <br>
-  <input type="date" name="date">
-  <br>
-  <label for="">Address (optional)</label>
-  <br>
-  <input type="text" name="address">
-  <br>
-  <label for="">Contact Number (optional)</label>
-  <br>
-  <input type="tel" name="phoneNumber">
-  <br>
-  <label for="">Insured?</label>
-  <br>
-  <select name="insurance">
-    <option value="">--Please choose an option--</option>
-    <option value="true">Yes</option>
-    <option value="false">No</option>
-  </select>
-  <br>
-  <label for="">Wage?</label>
-  <br>
-  <input type="number" name="hourlyFee">
-  <br>
-  <label for="">Images</label>
-  <br>
-  <input type="file" name="image">
-  <br>
-  <br>
+<div class="page-container">
+  <h1>Create Post</h1>
+  <form action="/posting/new" method="post">
+    <label for="">Post Title</label>
+    <br>
+    <input type="text" name="title">
+    <br>
+    <label for="">Describe It</label>
+    <br>
+    <input type="text" name="description">
+    <br>
+    <label for="">Where?</label>
+    <br>
+    <select name="location">
+      <option value="">--Please select your City--</option>
+      {{#each location}}
+      <option value="{{this}}">{{this}}</option>
+      {{/each}}
+    </select>
+    <br>
+    <label for="">Date</label>
+    <br>
+    <input type="date" name="date">
+    <br>
+    <label for="">Address (optional)</label>
+    <br>
+    <input type="text" name="address">
+    <br>
+    <label for="">Contact Number (optional)</label>
+    <br>
+    <input type="tel" name="phoneNumber">
+    <br>
+    <label for="">Insured?</label>
+    <br>
+    <select name="insurance">
+      <option value="">--Please choose an option--</option>
+      <option value="true">Yes</option>
+      <option value="false">No</option>
+    </select>
+    <br>
+    <label for="">Wage?</label>
+    <br>
+    <input type="number" name="hourlyFee">
+    <br>
+    <label for="">Images</label>
+    <br>
+    <input type="file" name="image">
+    <br>
+    <br>
 
-  <button type="submit">Submit</button>
-</form>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
 
 
 {{#if errorMessage}}
-<h1 style="color: red;">{{errorMessage}}</h1>
+<h1 style=" color: red;">{{errorMessage}}</h1>
 {{/if}}

@@ -14,7 +14,7 @@
 
 <body>
 
-   <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+   <nav class="navbar fixed-top navbar-expand-lg navbar-light ">
       <div class="container-fluid">
          <a class="navbar-brand" href="/">JHOBBY</a>
          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -36,7 +36,7 @@
             </ul>
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                <a href="/auth/logout">
-                  <button class="btn btn-primary me-md-2" type="button">Log Out</button></a>
+                  <button class="btn btn-outline-primary" type="button">Log Out</button></a>
             </div>
             {{else }}
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
@@ -49,20 +49,6 @@
          </div>
       </div>
    </nav>
-   {{!-- <div class="background-container">
-      <span class="columns"></span>
-      <span class="columns"></span>
-      <span class="columns"></span>
-      <span class="columns"></span>
-      <span class="columns"></span>
-      <span class="columns"></span>
-      <span class="columns"></span>
-      <span class="columns"></span>
-      <span class="columns"></span>
-      <span class="columns"></span>
-      <span class="columns"></span>
-      <span class="columns"></span>
-   </div> --}}
    <div id="body-container">
       {{{body}}}
    </div>
