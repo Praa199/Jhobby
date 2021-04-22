@@ -133,13 +133,6 @@ List of other features outside of the MVPs scope
 >   >   > - lastName
 >   >   > - location
 >   >   > - email
->   >   > - image
-
-> - GET /message/inbox
->   > - renders inbox.hbs
-
-> - GET /message/new
->   > - renders write-message.hbs
 
 > - POST /auth/logout
 >   > - body: (empty)

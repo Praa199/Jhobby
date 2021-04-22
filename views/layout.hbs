@@ -14,9 +14,9 @@
 
 <body>
 
-   <nav class="navbar fixed-top navbar-expand-lg navbar-light ">
+   <nav class="navbar fixed-top navbar-expand-lg navbar-light  bg-dark">
       <div class="container-fluid">
-         <a class="navbar-brand" href="/">JHOBBY</a>
+         <a class="navbar-brand" id="brand" href="/"> JHOBBY</a>
          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -25,13 +25,13 @@
             {{#if user}}
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                <li class="nav-item">
-                  <a class="nav-link" href="/posting/result">Home</a>
+                  <a class="nav-link text-primary" href="/posting/result">Home</a>
                </li>
                <li class="nav-item">
-                  <a class="nav-link" href="/profile">Profile</a>
+                  <a class="nav-link text-primary" href="/profile">Profile</a>
                </li>
                <li class="nav-item">
-                  <a class="nav-link" href="/posting/new">Create a Post</a>
+                  <a class="nav-link text-primary" href="/posting/new">Create a Post</a>
                </li>
             </ul>
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
@@ -49,11 +49,11 @@
          </div>
       </div>
    </nav>
-   <div id="body-container">
+   <article id="body-container">
       {{{body}}}
-   </div>
+   </article>
    {{#if user}}
-   <footer>
+   <footer class=" bg-dark">
       <div class="footer-div">
          <a class="footer-p" href="/"> About
          </a>
@@ -69,7 +69,7 @@
    </footer>
 
    {{else}}
-   <footer>
+   <footer class=" bg-dark">
       <div class="footer-div">
          <a href="/">
             <img src="" alt="">

@@ -1,5 +1,4 @@
 body {
-  padding: 50px;
   font: 12px "Lucida Grande", Helvetica, Arial, sans-serif;
   background-color: #ffffff;
   background-image: url("data:image/svg+xml,%3Csvg width='40' height='1' viewBox='0 0 40 1' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h20v1H0z' fill='%23f5cfba' fill-opacity='0.26' fill-rule='evenodd'/%3E%3C/svg%3E");
@@ -18,13 +17,14 @@ h1 {
 /* layout.html */
 
 #body-container {
-  min-height: 80vh;
+  min-height: 89vh;
   display: flex;
   justify-content: space-around;
 }
 
 footer {
-  max-width: 90%;
+  max-width: 100%;
+  min-height: 5rem;
   margin: 0 auto;
   display: flex;
   justify-content: space-around;
@@ -37,7 +37,20 @@ footer {
 }
 
 .page-container {
+  height: 100%;
   padding: 5% 20% 0 20%;
+  background-color: rgb(148, 148, 148);
+  opacity: 0.6;
+}
+
+nav,
+footer {
+  opacity: 0.8; /* Barely see the text over the background */
+}
+
+#brand {
+  font-size: 2rem;
+  font-weight: bolder;
 }
 
 /* index.hbs, profile.hbs, post-form.hbs, 

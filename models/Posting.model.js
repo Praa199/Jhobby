@@ -1,5 +1,6 @@
 const { Schema, model } = require("mongoose");
 const LOCATION_ENUM = require("../utils/constants");
+const fileUploader = require("../config/cloudinary.config");
 
 const postingSchema = new Schema({
   title: {
