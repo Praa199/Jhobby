@@ -1,6 +1,6 @@
 <div class="page-container">
   <h1>Edit Post</h1>
-  <form action="/posting/{{posting._id}}/edit" method="POST">
+  <form action="/posting/{{posting._id}}/edit" method="POST" enctype="multipart/form-data">
     <label for="">Post Title</label>
     <br>
     <input type="text" name="title" value="{{posting.title}}">
@@ -13,7 +13,7 @@
     <label for="">Where?</label>
     <br>
     <select name="location">
-      <option value="{{posting.location}}">--Please select your City--</option>
+      <option>{{posting.location}}</option>
       {{#each locations}}
       <option value="{{this}}">{{this}}</option>
       {{/each}}
@@ -32,7 +32,7 @@
     <label for="">Insured?</label>
     <br>
     <select name="insurance" value="{{posting.insurance}}">
-      <option value="">--Please choose an option--</option>
+      <option value="">{{posting.insurance}}</option>
       <option value="tue">Yes</option>
       <option value="false">No</option>
     </select>
@@ -41,12 +41,13 @@
     <br>
     <input type=" number" name="hourlyFee" value="{{posting.hourlyFee}}">
     <br>
-    <label for="">Images</label>
-    <br>
-    <input type="file" name="image" src="{{posting.image}}">
-    <br>
     <br>
 
-    <button type=" submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary">Submit</button>
   </form>
+  <br>
+  <br>
+  {{#if errorMessage}}
+  <h1 style=" color: red;">{{errorMessage}}</h1>
+  {{/if}}
 </div>

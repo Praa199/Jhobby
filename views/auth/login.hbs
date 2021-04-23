@@ -15,4 +15,10 @@
 
       <button type="submit" class="btn btn-primary">Enter Site</button>
    </form>
+   <br>
+   <br>
+
+   {{#if errorMessage}}
+   <h1 style="color: red;">{{errorMessage}}</h1>
+   {{/if}}
 </div>

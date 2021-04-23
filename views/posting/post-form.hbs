@@ -1,6 +1,6 @@
 <div class="page-container">
   <h1>Create Post</h1>
-  <form action="/posting/new" method="post">
+  <form action="/posting/new" method="post" enctype="multipart/form-data">
     <label for="">Post Title</label>
     <br>
     <input type="text" name="title">
@@ -13,7 +13,7 @@
     <label for="">Where?</label>
     <br>
     <select name="location">
-      <option value="">--Please select your City--</option>
+      <option value="{{location}}">--Please select your City--</option>
       {{#each location}}
       <option value="{{this}}">{{this}}</option>
       {{/each}}
@@ -51,9 +51,9 @@
 
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
+  <br>
+  <br>
+  {{#if errorMessage}}
+  <h1 style=" color: red;">{{errorMessage}}</h1>
+  {{/if}}
 </div>
-
-
-{{#if errorMessage}}
-<h1 style=" color: red;">{{errorMessage}}</h1>
-{{/if}}

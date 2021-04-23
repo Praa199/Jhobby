@@ -38,20 +38,21 @@ List of other features outside of the MVPs scope
 
 ### Posts
 
-- revise forms for better functioning
-- only post authors can edit them
 - evaluate advertised activity
-- add the date when post was created
-- view pictures if any
 - choose between offering or searching for service
 
 ### Messaging
 
 - messaging function among registered users
 
+### Rating + feedback-comments
+
+- accept a rating plus a comments from other users
+
 ### About, FAQ, Contact
 
 - create routes and pages
+- footer
 
 - ...
 

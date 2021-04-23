@@ -39,6 +39,7 @@ footer {
 .page-container {
   height: 100%;
   padding: 5% 20% 0 20%;
+  margin-top: 4.5rem;
   background-color: rgb(148, 148, 148);
   opacity: 0.6;
 }

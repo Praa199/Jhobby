@@ -1,11 +1,12 @@
 <div class="page-container" id="profile-container">
   <div>
-    <h3>Hello:
+    <h3>Hello: <br>
       {{user.firstName}} {{user.lastName}}
+      <hr>
     </h3>
-    <h4>from {{user.location}}</h4>
-    <img src="{{user.image}}" alt="image" srcset="">
-    <a href="/profile/edit"><button class="btn btn-outline-primary">Update Profile</button></a>
+    <h4>From: <br> {{user.location}}</h4>
+    <hr> <a href="/profile/edit"><button class="btn btn-outline-primary">Update
+        Profile</button></a>
   </div>
   <div class="own-posting">
     <div class="new-posting-button">
@@ -28,12 +29,15 @@
       </p>
     </div>
     <div>
-      <img src="{{this.image}}" alt="">
+      <img src="{{this.image}}" alt="" height="200rem" width="200rem">
     </div>
     <div>
       <a href="/posting/{{this._id}}/edit"><button class="btn btn-primary">Edit Post</button></a>
       <a href="/posting/{{this._id}}/delete"><button class="btn btn-outline-primary">Remove Post</button></a>
     </div>
+    <br>
+    <hr>
+    <br>
     {{/each}}
   </div>
 </div>

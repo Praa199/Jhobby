@@ -7,17 +7,17 @@ const router = express.Router();
 
 const isLoggedIn = require("../middlewares/isLoggedIn");
 const shouldNotBeLoggedIn = require("../middlewares/shouldNotBeLoggedIn");
+const fileUploader = require("../config/cloudinary.config");
 
 router.get("/result", (req, res, next) => {
   if (req.session.user) {
     const userLocation = req.session.user.location;
-    console.log("isLoggedIn****", userLocation);
     PostingModel.find({ location: userLocation })
       .then((result) => {
         res.render("posting/post-results", { result });
       })
       .catch((err) => {
-        console.log("fatal error ***", err);
+        console.log("result-error ***", err);
       });
   }
   PostingModel.find()
@@ -36,76 +36,78 @@ router.get("/new", isLoggedIn, (req, res, next) => {
   });
 });
 
-router.post("/new", isLoggedIn, (req, res, next) => {
-  const {
-    title,
-    date,
-    description,
-    location,
-    address,
-    phoneNumber,
-    insurance,
-    hourlyFee,
-    image,
-  } = req.body;
-
-  if (!title) {
-    res.render("posting/post-form", {
-      errorMessage: "Provide a title according to your post ",
-    });
-    return;
-  }
-
-  if (!description) {
-    return res.render("posting/post-form", {
-      errorMessage: "You need to write a description",
-    });
-  }
-
-  if (!location) {
-    return res.render("posting/post-form", {
-      errorMessage: "Please specify a location",
-    });
-  }
-
-  if (!hourlyFee) {
-    return res.render("posting/post-form", {
-      errorMessage: "Please provide a price",
-    });
-  }
-
-  PostingModel.findOne({ title }).then((found) => {
-    if (found) {
-      return res.render("posting/post-form", {
-        errorMessage: "This post title exists already",
-      });
-    }
-    // THere is no organization with this title: we are free to take it
-    PostingModel.create({
+router.post(
+  "/new",
+  fileUploader.single("image"),
+  isLoggedIn,
+  (req, res, next) => {
+    const {
       title,
-      description,
       date,
+      description,
       location,
       address,
       phoneNumber,
-      insurance, //["true", "false"]
+      insurance,
       hourlyFee,
       image,
-      postedBy: req.session.user._id,
-    })
-      .then((createdPostingModel) => {
-        console.log("createdPostingModel:", createdPostingModel);
-        // http://localhost:3000/organization/${createdPostingModel._id}
-        res.redirect(`/profile`);
-      })
-      .catch((err) => {
-        console.log(err);
-        res.render("/posting/post-form", {
-          errorMessage: "Error creating post***",
-        });
+    } = req.body;
+
+    if (!title) {
+      res.render("posting/post-form", {
+        errorMessage: "Provide a title according to your post ",
       });
-  });
-});
+      return;
+    }
+
+    if (!description) {
+      return res.render("posting/post-form", {
+        errorMessage: "You need to write a description",
+      });
+    }
+
+    if (!location) {
+      return res.render("posting/post-form", {
+        errorMessage: "Please specify a location",
+      });
+    }
+
+    if (!hourlyFee) {
+      return res.render("posting/post-form", {
+        errorMessage: "Please provide a price",
+      });
+    }
+
+    PostingModel.findOne({ title }).then((found) => {
+      if (found) {
+        return res.render("posting/post-form", {
+          errorMessage: "This post title exists already",
+        });
+      }
+      PostingModel.create({
+        title,
+        description,
+        date,
+        location,
+        address,
+        phoneNumber,
+        insurance, //["true", "false"]
+        hourlyFee,
+        image: req.file.path,
+        postedBy: req.session.user._id,
+      })
+        .then((createdPostingModel) => {
+          res.redirect(`/profile`);
+        })
+        .catch((err) => {
+          console.log(err);
+          res.render("/posting/post-form", {
+            errorMessage: "Error creating post***",
+          });
+        });
+    });
+  }
+);
 
 router.get("/:id/view", (req, res, next) => {
   let id = req.params.id;
@@ -139,7 +141,6 @@ router.post("/:id/edit", isLoggedIn, (req, res, next) => {
     phoneNumber,
     insurance,
     hourlyFee,
-    image,
   } = req.body;
   if (!title) {
     res.render("posting/edit-post", {
@@ -176,7 +177,6 @@ router.post("/:id/edit", isLoggedIn, (req, res, next) => {
       phoneNumber,
       insurance,
       hourlyFee,
-      image,
     },
     { new: true }
   )
@@ -184,7 +184,7 @@ router.post("/:id/edit", isLoggedIn, (req, res, next) => {
       res.redirect("/profile");
     })
     .catch((err) => {
-      console.log("new-post-error***", err);
+      console.log("edit-post-error***", err);
     });
 });
 

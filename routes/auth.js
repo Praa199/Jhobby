@@ -107,25 +107,20 @@ router.post("/login", shouldNotBeLoggedIn, (req, res, next) => {
       .render("auth/login", { errorMessage: "Please provide your email." });
   }
 
-  // Here we use the same logic as above
-  // - either length based parameters or we check the strength of a password
   if (password.length < 1) {
     return res.status(400).render("auth/login", {
       errorMessage: "Your password needs to be at least 8 characters long.",
     });
   }
 
-  // Search the database for a user with the email submitted in the form
   UserModel.findOne({ email })
     .then((user) => {
-      // If the user isn't found, send the message that user provided wrong credentials
       if (!user) {
         return res
           .status(400)
           .render("auth/login", { errorMessage: "Wrong credentials." });
       }
 
-      // If user is found based on the email, check if the in putted password matches the one saved in the database
       bcrypt.compare(password, user.password).then((isSamePassword) => {
         if (!isSamePassword) {
           return res
@@ -133,16 +128,12 @@ router.post("/login", shouldNotBeLoggedIn, (req, res, next) => {
             .render("auth/login", { errorMessage: "Wrong credentials." });
         }
         req.session.user = user;
-        // req.session.user = user._id; // ! better and safer but in this case we saving the entire user object
         return res.redirect("/");
       });
     })
 
     .catch((err) => {
-      // in this case we are sending the error handling to the error handling middleware that is defined in the error handling file
-      // you can just as easily run the res.status that is commented out below
       next(err);
-      // return res.status(500).render("login", { errorMessage: err.message });
     });
 });
 
