@@ -224,7 +224,7 @@ title: {
 
 ### Figma
 
-[Wireframe](https://www.figma.com/file/750wTgnt6w0jgAsUNPbhfd/Figma-Wireframe-Kit-Free-Community?node-id=6%3A72)
+[Wireframe](https://www.figma.com/file/xaPH7uJG3hQj0T3c20e3AO/Jhobby)
 
 ### Git
 
