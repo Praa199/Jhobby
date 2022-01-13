@@ -232,7 +232,7 @@ The url to your repository and to your deployed project
 
 [Repository Link](https://github.com/Praa199/Jhobby.git)
 
-[Deploy Link](http://jhobby.heroku.com)
+[Deploy Link](https://jhobby.heroku.com)
 
 ### Slides
 
